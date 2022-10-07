@@ -5,7 +5,7 @@ import service.Mensaje;
 public class User {
 
     private String name;
-    private String id;
+    private String identification;
     private String address;
     private String phone;
     private String email;
@@ -15,9 +15,9 @@ public class User {
     public User() {
     }
 
-    public User(String name, String id, String address, String phone, String email, Mensaje mss) {
+    public User(String name, String identification, String address, String phone, String email, Mensaje mss) {
         this.name = name;
-        this.id = id;
+        this.identification = identification;
         this.address = address;
         this.phone = phone;
         this.email = email;
@@ -32,12 +32,12 @@ public class User {
         this.name = name;
     }
 
-    public String getId() {
-        return id;
+    public String getIdentification() {
+        return identification;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdentification(String identification) {
+        this.identification = identification;
     }
 
     public String getAddress() {
@@ -76,7 +76,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
-                ", id='" + id + '\'' +
+                ", identification='" + identification + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +

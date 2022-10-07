@@ -48,19 +48,10 @@ public class UserController {
     public void updateUser(){
         String idSearch= JOptionPane.showInputDialog("Enter the user id for update");
         if (idSearch!=null){
-            JOptionPane.showMessageDialog(null,"Enter the user data:  ");
-            String name= JOptionPane.showInputDialog("Enter the name");
-            String id= JOptionPane.showInputDialog("Enter the id");
-            String direccion= JOptionPane.showInputDialog("Enter the address");
-            String phone= JOptionPane.showInputDialog("Enter the phone");
-            String email= JOptionPane.showInputDialog("Enter the email");
-            userService.updateUser(idSearch,name, id, direccion, phone, email);
+            userService.updateUser(idSearch);
         }
     }
 
-public void hola(){
-
-}
     public void showUsers(){
         userService.viewUsers();
     }
