@@ -1,0 +1,5 @@
+package service;
+
+public enum Categoryy {
+    ACCESORIOELECTRONICO, ACCESORIODECORATIVO, COMPUTADOR, CELULAR
+}

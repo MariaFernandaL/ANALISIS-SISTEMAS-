@@ -64,10 +64,6 @@ public class User {
         this.email = email;
     }
 
-    public Mensaje getMss() {
-        return mss;
-    }
-
     public String seeMessage(){
         return mss.sendMessage();
     }
