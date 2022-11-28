@@ -1,5 +1,6 @@
 package controller;
 
+import factory.UserFactory;
 import service.CompradorMayorista;
 import service.CompradorOcasional;
 import service.Mensaje;
@@ -12,12 +13,14 @@ public class UserController {
 
     UserService userService= new UserServiceImpl();
     Mensaje mensaje;
+    UserFactory userFactory= new UserFactory();
 
     public UserController() {
     }
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UserFactory userFactory) {
         this.userService = userService;
+        this.userFactory = userFactory;
     }
 
 
@@ -34,11 +37,8 @@ public class UserController {
         String phone= JOptionPane.showInputDialog("Enter the phone");
         String email= JOptionPane.showInputDialog("Enter the email");
         String mss= JOptionPane.showInputDialog("Enter the type of buyer");
-        if (mss.equalsIgnoreCase("comprador mayorista")) {
-            mensaje=new CompradorMayorista();
-        } else if(mss.equalsIgnoreCase("comprador ocasional")){
-            mensaje= new CompradorOcasional();
-        }
+        mensaje=userFactory.menssageBuyer(mss);
+
         userService.createUser(name, identification, direccion, phone, email,mensaje);
     }
 

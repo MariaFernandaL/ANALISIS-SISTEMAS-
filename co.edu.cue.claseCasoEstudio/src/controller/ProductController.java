@@ -1,5 +1,6 @@
 package controller;
 
+import factory.ProductFactory;
 import service.*;
 import service.impl.ProductServiceImpl;
 import service.impl.UserServiceImpl;
@@ -10,12 +11,14 @@ public class ProductController {
 
 
     ProductService productService= new ProductServiceImpl();
+    ProductFactory productFactory= new ProductFactory();
 
     public ProductController() {
     }
 
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService,ProductFactory productFactory ) {
         this.productService = productService;
+        this.productFactory = productFactory;
     }
 
 
@@ -33,17 +36,7 @@ public class ProductController {
         String material= JOptionPane.showInputDialog("Enter the material");
         String color= JOptionPane.showInputDialog("Enter the color");
         String category= JOptionPane.showInputDialog("Enter the category");
-        Categoryy categoryy=null;
-        if (category.equalsIgnoreCase("accesorio electronico")) {
-            categoryy= Categoryy.ACCESORIOELECTRONICO;
-        } else if (category.equalsIgnoreCase("accesorio decorativo")) {
-            categoryy = Categoryy.ACCESORIODECORATIVO;
-        } else if (category.equalsIgnoreCase("computador")) {
-            categoryy = Categoryy.COMPUTADOR;
-        } else if (category.equalsIgnoreCase("celular")) {
-            categoryy = Categoryy.CELULAR;
-        }
-
+        Categoryy categoryy=productFactory.createCategoryProduct(category);
         int stock= Integer.parseInt(JOptionPane.showInputDialog("Enter the stock"));
         String listImages= JOptionPane.showInputDialog("Enter the list Images");
         productService.createProduct(name,sku,description,price,material,color,categoryy, stock, listImages);
